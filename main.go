@@ -18,14 +18,12 @@ func main() {
 	config := Config{Environment: os.Args[1]}
 	
 	//command prompt params
-	if config.Environment == "-debug" {
-		fmt.Println("Running in Debug...")
-	} else if config.Environment == "-dev" {
-		fmt.Println("Running in Development...")
-	} else if config.Environment == "-prod" {
-		fmt.Println("Running in Production...")
-	} else {
-		fmt.Println("Add -debug, -dev, or -prod as a paramter")
-		os.Exit(0)
+	switch config.Environment {
+		case "-debug": fmt.Println("Running in Debug...")
+		case "-dev"  : fmt.Println("Running in Development...")
+		case "-prod" : fmt.Println("Running in Production...")
+		default:
+			fmt.Println("Add -debug, -dev, or -prod as a parameter")
+			os.Exit(0)
 	}
 }
